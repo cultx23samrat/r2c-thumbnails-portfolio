@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+// Error yahi thi, import MyLogo from './logo.png'; file available nahi hai. 
+// Isko hata diya gaya hai. Hum wapas public folder URL use karenge.
 
 // --- INLINE SVG ICONS (NO LUCIDE-REACT NEEDED) ---
 const IconWrapper = ({ size = 24, className = "", fill = "none", children }) => (
@@ -152,7 +154,7 @@ export default function App() {
   const [newCategory, setNewCategory] = useState({ name: '', iconName: 'layout', color: 'yellow' });
   const [editingThumb, setEditingThumb] = useState(null);
 
-  // LOGO LINK - Changed to remove spaces (rename your file to r2c-logo.png)
+  // LOGO LINK - Pointing back to the public folder (r2c-logo.png)
   const LOGO_URL = "/r2c-logo.png"; 
 
   // --- HELPERS ---
@@ -328,6 +330,7 @@ export default function App() {
                 src={LOGO_URL} 
                 alt="R2C Premium Logo" 
                 className="h-12 sm:h-16 relative z-10 logo-glow logo-3d-transparent object-contain"
+                onError={(e) => { e.target.onerror = null; e.target.style.display = 'none'; }}
               />
             </div>
             
@@ -507,6 +510,7 @@ export default function App() {
               src={LOGO_URL} 
               alt="R2C Premium Logo" 
               className="h-16 sm:h-24 logo-glow logo-3d-transparent object-contain" 
+              onError={(e) => { e.target.onerror = null; e.target.style.display = 'none'; }}
             />
           </div>
           <p className="text-gray-400 mb-2 mt-4">Premium Thumbnail Design Team</p>
